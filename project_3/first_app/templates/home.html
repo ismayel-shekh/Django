@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>this is home page</h1>
+    <h1>
+        Author : {{author}}
+    </h1>
+    <h2>Age : {{age}}</h2>
+    <h2>{{lst}}</h2>
+    <!-- conditional statement -->
+    {%if age >= 20%}
+        <h4>you will get driving license</h4>
+    {% elif age >= 10 and age <= 19 %}
+        <h3>You will not get driving license</h3>
+    {% else %}
+        <h4>you're a child</h4>
+    {%endif%}
+
+    {{lst}}
+    <h1> {{lst | join:" - "}}</h1>
+    <h1>{{birthday | date:"D d M Y"}}</h1>
+    <!-- <h1>{{birthday | time:"H:i"}}</h1> -->
+    <h1><{{ birthday | time:"H:i" }}</h1>
+
+    <h1>{{"python is Fun" | cut:" "}}</h1>
+    <h1>{{"python is Fun" | upper}}</h1>
+    <h1>{{"python is Fun" | lower}}</h1>
+    <h1>{{"python is Fun" | random}}</h1>
+
+
+
+    <h1>{{value | length}}</h1>
+    <h1>{{'happy coding. python is Fun.' | truncatechars:8}}</h1>
+    <h1>{{'happy coding. python is Fun.' | truncatewords:2}}</h1>
+
+<!-- For loop -->
+    {%for i in courses%}
+    <h1>{{i.id}}  {{i.name}}  {{i.fee}}</h1>
+    {% endfor %}
+</body>
+</html>
