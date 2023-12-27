@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>king is back</h1>
+    <h1>name : {{name}}</h1>
+    <!-- join -->
+    <h2>{{lst | join:" "}}</h2>
+    <!-- Data filter -->
+    <h2>{{date | date:"D d M Y"}}</h2>
+    <!-- defult filter -->
+    
+    <!-- add filter -->
+    <h2>{{test | add:"10"}}</h2>
+    <!-- capfirst filter -->
+    <h2>{{name | capfirst}}</h2>
+    <!-- cut filer -->
+    <h2>{{space | cut:" "}}</h2>
+    <!--  dictsort filter-->
+    <h2>{{ options | dictsort:"name"}}</h2>
+    <!-- first filer -->
+    <h2>{{lst | first}}</h2>
+    <!-- last filter -->
+    <h2>{{lst | last}}</h2>
+    <!-- length filter -->
+    <h2>{{space | length}}</h2>
+    <!-- Line numvers filter -->
+    <h2>{{options | linenumbers}}</h2>
+    <!-- lower filter -->
+    <h2>{{space | lower}}</h2>
+    <!-- upper filter -->
+    <h2>{{space | upper}}</h2>
+    <!-- title filter -->
+    <h2>{{space | title}}</h2>
+    <!-- Rendom Filter -->
+    <h2>{{ space | random }}</h2>
+    <!-- since filer -->
+    <h2>{{space | slice:"5"}}</h2>
+    <!-- time filter -->
+    <h2>{{date | time:"H\h i\m"}}</h2>
+    <!-- time since filter -->
+    <h2>{{date | timesince}}</h2>
+    <!-- truncatechars -->
+    <h2>{{name | truncatechars:3}}</h2>
+    <!-- Word count filter -->
+    <h2>{{space | wordcount}}</h2>
+
+    <!-- trun cate words filter -->
+    <h2>{{space | truncatewords:2}}</h2>
+
+</body>
+</html>
