@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if messages %}
+  {% for i in messages %}
+  <h4> {{i}} </h4>
+    
+  {% endfor %}
+{% endif %}
+        <div>
+            <form method="post" style="width: 50%; margin:auto">
+                {% csrf_token %}
+                {{ form | crispy}}
+                <button class="btn btn-success">Change Data</button>
+            </form>
+        </div>
+      {% endblock  %}

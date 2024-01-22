@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="col-10 p-3">
+    <style>
+        h4 {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #3498db; 
+            background-color: #efecf1; 
+            font-family: 'Arial', sans-serif;
+    
+        }
+    </style>
+    <h4> Buy {{data | length}} Cars</h4>
+    <div class="d-flex flex-wrap  pt-5 m-5">
+        {% for c in data %}
+        <div class="m-5">
+            <div class="card" style="width: 18rem;">
+                <img src="{{c.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Name : {{c.Car_name}}</h5>
+                    <h5 class="card-title">Price : {{c.Price}}$</h5>
+                    <p class="card-text">{{c.Car_Details | truncatewords:10 }}</p>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

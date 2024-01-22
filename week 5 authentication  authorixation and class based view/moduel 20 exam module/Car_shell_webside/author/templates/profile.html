@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div>
+        <a class="btn btn-primary" href="{% url 'edit_profile'%}">Edit your profile</a>
+
+        <div class="container mt-5">
+          <h1 class="text-danger">Name: {{ data.first_name }} {{ data.last_name }}</h1>
+          <h4 class="text-primary">Email: {{ data.email }}</h4>
+          <h3>{{data.}}</h3>
+      </div>
+
+    </div>
+
+
+{% endblock %}

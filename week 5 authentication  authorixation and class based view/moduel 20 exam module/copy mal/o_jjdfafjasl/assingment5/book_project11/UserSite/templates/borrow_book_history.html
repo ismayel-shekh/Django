@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center mt-3">Borrowing Book History</h1>
+
+    <div style="width: 80%; margin: auto;" class="mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Book Title</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Borrowing Date</th>
+                    <th scope="col">Return Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in borrow_history %}
+                    <tr>
+                        <td>{{ i.post.title }}</td>
+                        <td>{{ i.borrow_time }}</td>
+                        <td><a href="{% url 'return_action_view' i.post.id %}" class="btn btn-success text-center">Return</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

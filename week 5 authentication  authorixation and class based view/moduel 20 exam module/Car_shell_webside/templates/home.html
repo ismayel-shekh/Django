@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="d-flex flex-wrap px-5 pt-3 align-items-center">
+    <div class="col-6">
+        <h5>The early cars were sold by automakers to customers directly or through a variety of channels, including mail order, department stores, and traveling representatives. For example, Sears made its first attempt at selling a gasoline-engined chain-drive high-wheeler in 1908 through its mail-order catalog and starting in 1951 the Allstate through select its stores and the catalog.Fred Koller opened the first dedicated car dealership in 1889. Known as the Reading Automobile Company, Koller sold cars manufactured in Cleveland, Ohio at his dealership in Reading, Pennsylvania. This is thought to be the first dealership dedicated solely to selling cars—meaning it hadnt initially been established to sell horse-drawn carriages. Today, direct sales by an automaker to consumers are limited by most states in the U.S. through franchise laws that require new cars to be sold only by licensed and bonded, independently owned dealerships. The first woman car dealer in the United States was Rachel "Mommy" Krouse who in 1903 opened her business, Krouse Motor Car Company</h5>
+    </div>
+    <div class="col-6">
+        <img style="width: 700px;" class="m-5" src="{% static 'p.jpg' %}" alt="picture">
+    </div>
+</div>
+<br/>
+
+<div class="d-flex justify-content-center align-items-center">
+
+{% for c in category %}
+<div class="mx-2">
+
+<input type="radio" class="btn-check" name="brand" id="{{c.id}}" autocomplete="off" unchecked>
+<label class="btn btn-danger" for="{{c.name}} "><a href="{% url 'category_wice_car' c.name %}" class="text-decoration-none text-black">{{c.name}}</a></label>
+</div>
+    {% endfor %}
+</div>
+
+
+
+<div class="col-10 p-3">
+    <style>
+        h4 {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #9b0e6e; /* Text color (you can use a color code or name) */
+            background-color: #ecf1ef; /* Background color */
+            font-family: 'Arial', sans-serif;
+             /* Optional: Center the text */
+        }
+    </style>
+    <h4>{{data | length}} Car Found</h4>
+    <div class="d-flex flex-wrap  pt-5 m-5">
+{% for c in data %}
+<div class="m-5">
+<div class="card" style="width: 18rem;">
+    <img src="{{c.image.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Name : {{c.car_name}}</h5>
+        <h5 class="card-title">Price : {{c.car_price}}$</h5>
+        <h5 class="card-title">Brand Name : {{c.category}}</h5>
+      <p class="card-text">{{c.car_detail | truncatewords:10 }}</p>
+      <a href="{% url 'detail_post' c.id %}" class="btn btn-primary">View Details</a>
+    </div>
+</div>
+</div>
+{% endfor %}
+
+</div>
+</div>
+
+
+{% endblock %}

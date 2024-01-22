@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="d-flex flex-wrap">
+  <div class="col-6" style="text-align: center; padding: 20px">
+    <h1 style="padding: 20px; color: rgb(156, 139, 139)">
+      Welcome To Tesla Motor
+    </h1>
+
+    <p>
+      After an ill-fated coupe (R8 E-Tron), a sporty sedan (E-Tron GT), and a
+      bunch of Q crossovers, Audi is finally making an electric wagon. It's
+      probably going to be called A6 Avant E-Tron, and this is our best look
+      yet. Spy shots show a production-ready prototype with most of the
+      camouflage removed. That said, there's still some deceiving body-colored
+      tape at the front and rear of the vehicle, along with a bit of mascara on
+      the headlights. Because split headlights are a trend nowadays, the A6
+      Avant E-Tron will echo the Q6 E-Tron and next-gen Q3 with two layers of
+      lights. Where regulations allow, those nifty side cameras will replace the
+      conventional mirrors.
+    </p>
+  </div>
+  <div class="col-6">
+    <img
+      style="width: 650px; padding: 20px"
+      src="{% static 'car.jpg' %}"
+      alt=""
+    />
+  </div>
+</div>
+
+<!-- catagory card section  -->
+
+<div class="card mb-3 row d-flex" style="text-align: center; background-color:rgb(223, 233, 229)">
+  <div class="card-body">
+    <h1 class="pb-3">All Car Brand</h1>
+    {% for j in brand  %}
+    <a href="{% url 'brand_wise_post' j.name %}" class="btn bg-black text-white m-2"><h5>{{j.name}}</h5> </a>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- card section  -->
+
+  <div class="d-flex row m-auto flex-wrap" >
+  <h3 class="p-3 text-center"> {{data | length}} Result Founds </h3>
+    {% for i in data %}
+    <div class="card col-3 m-3" style="width:18rem">
+      <img src="{{ i.image.url }}" class="card-img-top pt-2" alt="...">
+      <div class="card-body">
+        <h4 class="card-title "><a href="{% url 'detialpage' i.id %}" class="text-black text-decoration-none">Brand: {{i.Brand_Name}} </a></h4>
+        <h5 class="card-title">Model: {{i.Car_Model}} </h5>
+        <h6 class="card-title">Price: {{i.Price}} </h6>
+        <p class="card-text">{{i.Car_Details | truncatewords:10}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+{% endblock %}
+

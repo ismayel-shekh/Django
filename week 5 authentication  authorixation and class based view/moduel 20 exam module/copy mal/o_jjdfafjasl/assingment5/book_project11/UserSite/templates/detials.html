@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if messages %}
+  {% for i in messages %}
+  <h4> {{i}} </h4>
+    
+  {% endfor %}
+{% endif %}
+
+<div class="d-flex flex-wrap align-content-center">
+  <div class="col-6 text-center p-5">
+    <img src="{{ usersite.image.url }}" class="card-img-top m-2 w-50" alt="...">
+  </div>
+  <div class="col-6 bg-body-secondary text-center p-5">
+    <p class="card-text"><h2>Title: {{usersite.title}}</h2> </p>
+    <h6 class="card-text m-2">Details: {{usersite.description}} </h6>
+    <p class="card-text"><h2>Total Quantity: {{usersite.Book_Quantity}}</h2></p>
+    <a class="btn btn-success mt-3" disabled><h3>Price: {{usersite.browing_price}}</h3> </a>
+    <br>
+      {% if request.user.is_authenticated %}
+      <a class="btn btn-warning mt-2" href= "{% url  'borrowbookpage' id=usersite.id %}" ><h3>Borrow Book</h3></a>
+    {% endif %}
+    
+  </div>
+</div>
+
+{% endblock  %}

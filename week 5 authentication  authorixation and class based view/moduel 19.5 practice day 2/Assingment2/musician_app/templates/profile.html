@@ -1,0 +1,15 @@
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block album_block %}
+{% if messages %}
+  {% for i in messages %}
+  <h4> {{i}} </h4>
+    
+  {% endfor %}
+{% endif %}
+<div>
+  <h1>This is profile page</h1>
+</div>
+    {% endblock  %}
+    

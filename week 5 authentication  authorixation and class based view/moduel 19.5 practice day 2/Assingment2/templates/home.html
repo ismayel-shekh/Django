@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+{% block Home_block %}
+    
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Musician Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Instrument Type</th>
+        <th scope="col">Album Name</th>
+        <th scope="col">Release Date</th>
+        <th scope="col">Rating</th>
+         {% if user.is_authenticated %}
+        <th scope="col">Actions</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in musician_albums %}
+          <tr>
+            <td>{{ entry.id }}</td>
+            <td>{{ entry.First_Name.First_Name }} {{ entry.First_Name.Last_Name }}</td>
+            <td>{{ entry.First_Name.Email }}</td>
+            <td>{{ entry.First_Name.Instrument_Type }}</td>
+              <td>{{ entry.Album_name }}</td>
+              <td>{{ entry.ReleaseDate }}</td>
+              <td>{{ entry.Rating }}</td>
+            {% if user.is_authenticated %}
+            <td>
+              <a href=" {% url 'editedbutton' entry.id %} " class="btn btn-success">Edit</a>
+              <a href=" {% url 'deletebutton' entry.id %} " class="btn btn-danger">Delete</a>
+            </td>
+            {% endif %}
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if messages %}
+  {% for i in messages %}
+  <h4> {{i}} </h4>
+    
+  {% endfor %}
+{% endif %}
+
+    <h1 class="text-center mt-3">Borrowing Book History</h1>
+
+    <div style="width: 80%; margin: auto;" class="mt-5 ">
+        <table class="table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col"><h4>Book Title</h4></th>
+                <th scope="col"><h4>Book Photo</h4></th>
+                <th scope="col"><h4>Borrowing Date</h4></th>
+              
+              </tr>
+            </thead>
+            <tbody>
+            {% for j in data %} 
+            <tr>
+              <td><h6>{{j.book.title}}</h6></td>
+              <td><img src="{{ j.book.image.url }}" alt="{{ j.book.title }}" style="max-width: 100px; max-height: 100px;"></td>
+              <td>{{j.borrow_time}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+{% endblock  %}
+

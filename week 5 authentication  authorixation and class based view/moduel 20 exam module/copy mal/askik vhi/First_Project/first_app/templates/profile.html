@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if messages %}
+  {% for i in messages %}
+  <h4> {{i}} </h4>
+    
+  {% endfor %}
+{% endif %}
+      {% csrf_token %}
+        <a href="{% url 'changedatapage' %}" class="btn btn-secondary m-5">Edit Your Profile Info</a>
+      {% endblock  %}

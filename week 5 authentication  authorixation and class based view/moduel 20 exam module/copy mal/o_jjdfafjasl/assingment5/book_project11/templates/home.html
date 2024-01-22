@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+      
+  <div >
+    <div class="row p-5">
+      <div class="col-6 pt-4 text-center">
+        <h6>Polycystic ovary syndrome (PCOS) is a common infertility disorder affecting a significant proportion of the global population. It is the main cause of anovulatory infertility in women and is the most common endocrinopathy affecting reproductive-aged women, with a prevalence of 8–13% depending on the criteria used and population studied. The disease is multifactorial and complex and, therefore, often difficult to diagnose due to overlapping symptoms. Multiple etiological factors have been implicated in PCOS. Due to the complex pathophysiology involving multiple pathways and proteins, single genetic diagnostic tests cannot be determined. Progress has been achieved in the management and diagnosis of PCOS; however, not much is known about the molecular players and signaling pathways underlying it. Conclusively PCOS is a polygenic and multifactorial syndromic disorder. Many genes have been associated with PCOS, which affect fertility either directly or indirectly. However, studies conducted on PCOS patients from multiple families failed to find a fully penetrant variant(s).</h6>
+      </div>
+      <div class="col-6">
+        <img src="{% static 'libary.jpg' %}" alt="">
+      </div>
+    </div>
+  </div>
+
+<!-- category site -->
+
+<div class="card mb-3 row d-flex" style="text-align: center; background-color:rgb(223, 233, 229)">
+  <div class="card-body">
+    <h1 class="pb-3">Book Category</h1>
+    {% for j in category  %}
+    <a class="btn bg-black text-white m-2" href="{% url 'category_wise_filter' j.slug %}"><h5>{{j.category}}</h5> </a>
+    {% endfor %}
+  </div>
+</div>
+
+
+<!-- card section -->
+<h3 class="p-3 text-center"> {{data | length}} Result Founds </h3>
+<div class="d-flex flex-wrap align-content-center">
+  
+  {% for i in data %}
+  <div class="card col-3 text-center">
+    <div class="card-body">
+      <img src="{{ i.image.url }}" class="card-img-top m-2" alt="...">
+      <a href="{% url 'detailpage' i.id %}" class= 'text-decoration-none m-2'><h5 class="card-text text-black">Title:  {{i.title}} </h5></a>
+      <h6 class="card-text">Details:  {{i.description | truncatewords:20}} </h6>
+      <p>Catagory:  {% for cat in i.category.all  %}
+      <button class="btn btn-warning m-2" disabled>{{cat.category}}</button>
+      {% endfor %}  
+      <div class="justify-content-around">
+        <button class="btn btn-success m-2 mx-lg-5" disabled> <h3>Price: {{i.browing_price}}</h3> </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+    {% endblock  %}
+
+  
